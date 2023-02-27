@@ -72,7 +72,7 @@ def logout():
 def load_logged_in_user():
     user_id = session.get("user_id")
 
-    g.user = None if user_id is None else get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,))
+    g.user = None if user_id is None else get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
 
 
 def login_required(view):
